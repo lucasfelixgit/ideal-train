@@ -1,5 +1,6 @@
-package dev.java10x.ninjasignup;
+package dev.java10x.ninjasignup.ninja;
 
+import dev.java10x.ninjasignup.mission.MissionModel;
 import jakarta.persistence.*;
 
 @Entity
@@ -9,9 +10,16 @@ public class NinjaModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
+
     private String email;
+
     private int age;
+
+    @ManyToOne
+    @JoinColumn(name = "mission_id")
+    private MissionModel mission;
 
     public NinjaModel() {
     }
